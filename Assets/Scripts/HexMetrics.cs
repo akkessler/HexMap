@@ -28,6 +28,8 @@ public class HexMetrics {
 
     public const float noiseScale = 0.003f;
 
+    public const int chunkSizeX = 5, chunkSizeZ = 5;
+
     public static Texture2D noiseSource;
 
     public static Vector4 SampleNoise(Vector3 position)
