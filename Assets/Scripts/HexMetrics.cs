@@ -2,23 +2,41 @@
 
 public class HexMetrics {
 
+    // NOTE all values can be adjusted...but those mentioned below might be more useful to change
+
     public const float outerRadius = 10f;
 
     public const float innerRadius = outerRadius * 0.866025404f; // sqrt(3)/2
 
-    public const float solidFactor = 0.75f;
+    public const float solidFactor = 0.8f; // can adjust this
 
     public const float blendFactor = 1f - solidFactor;
 
-    public const float elevationStep = 5f;
+    public const float elevationStep = 3f; // can adjust this
 
-    public const int terracesPerSlope = 2;
+    public const int terracesPerSlope = 2; // can adjust this
 
     public const int terraceSteps = terracesPerSlope * 2 + 1;
 
     public const float verticalTerraceStepSize = 1f / (terracesPerSlope + 1);
 
     public const float horizontalTerraceStepSize = 1f / terraceSteps;
+
+    public const float cellPerturbStrength = 4f; // can adjust this
+
+    public const float elevationPerturbStrength = 1.5f; // can adjust this
+
+    public const float noiseScale = 0.003f;
+
+    public static Texture2D noiseSource;
+
+    public static Vector4 SampleNoise(Vector3 position)
+    {
+        return noiseSource.GetPixelBilinear(
+            position.x * noiseScale,
+            position.z * noiseScale
+        );
+    }
 
     static Vector3[] corners = {
         new Vector3(0f, 0f, outerRadius),
